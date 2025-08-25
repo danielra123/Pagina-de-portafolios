@@ -99,6 +99,21 @@
             margin-bottom: 10px;
             color: #333;
         }
+.hero-avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin: 0 auto 30px;
+    border: 3px solid rgba(0, 212, 255, 0.3);
+    overflow: hidden; /* 🔥 recorta la parte que sobra */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.hero-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 🔥 asegura que se recorte bien y no se deforme */
+}
 
         .member-role {
             font-size: 1.1rem;
@@ -241,9 +256,9 @@
 
             <!--Daniel R - Desarrollador Full Stack -->
             <div class="member-card">
-                <div class="member-avatar">
-                    👨‍💻
-                </div>
+                   <div class="hero-avatar">
+                <img src="../1002395347.jpg" alt="1002395347.jpg" />
+            </div>
                 <h2>Daniel Ramirez</h2>
                 <div class="member-role">Desarrollador Full Stack</div>
                 <p>Desarrollador apasionado por crear soluciones web robustas y escalables. Experto en tecnologías modernas de frontend y backend.</p>
