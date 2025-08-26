@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Juan Ramirez - Desarrollador Full Stack y especialista en marketing
+    </title>
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background: #0f0f23;
+      }
+
+      .nav {
+        background: rgba(15, 15, 35, 0.95);
+        padding: 1rem 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        backdrop-filter: blur(10px);
+      }
+
+      .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #00d4ff;
+        font-family: "Courier New", monospace;
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: #fff;
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+
+      .nav-links a:hover {
+        color: #00d4ff;
+      }
+
+      .back-btn {
+        background: linear-gradient(135deg, #00d4ff, #0099cc);
+        color: white;
+        padding: 8px 20px;
+        border-radius: 25px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+      }
+
+      .back-btn:hover {
+        transform: scale(1.05);
+        box-shadow: 0 5px 15px rgba(0, 212, 255, 0.3);
+      }
+
+      .hero {
+        background: linear-gradient(135deg, #0f0f23, #1a1a3a);
+        color: white;
+        padding: 120px 20px 80px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="%23ffffff" stroke-width="0.5" opacity="0.1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+        z-index: 1;
+      }
+
+      .hero-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 2;
+      }
+
+      .hero-avatar {
+        width: 230px;
+        height: 280px;
+        background: linear-gradient(135deg, #00d4ff, #0099cc);
+        border-radius: 50%;
+        margin: 0 auto 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 4rem;
+        border: 3px solid rgba(0, 212, 255, 0.3);
+      }
+
+      .hero h1 {
+        font-size: 3.5rem;
+        margin-bottom: 15px;
+        font-weight: 300;
+      }
+
+      .hero .role {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+        color: #00d4ff;
+      }
+
+      .hero .description {
+        font-size: 1.2rem;
+        max-width: 600px;
+        margin: 0 auto 30px;
+        opacity: 0.9;
+      }
+
+      .hero-skills {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+
+      .skill-badge {
+        background: rgba(0, 212, 255, 0.2);
+        border: 1px solid rgba(0, 212, 255, 0.3);
+        padding: 8px 20px;
+        border-radius: 25px;
+        font-weight: 500;
+        color: #00d4ff;
+      }
+
+      .section {
+        padding: 80px 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+        background: #fff;
+        color: #333;
+      }
+
+      .section.dark {
+        background: #1a1a3a;
+        color: #fff;
+      }
+
+      .section h2 {
+        font-size: 2.5rem;
+        text-align: center;
+        margin-bottom: 50px;
+        color: inherit;
+      }
+
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 30px;
+      }
+
+      .project-card {
+        background: #0f0f23;
+        color: white;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s ease;
+        border: 1px solid rgba(0, 212, 255, 0.2);
+      }
+
+      .project-card:hover {
+        transform: translateY(-10px);
+        border-color: rgba(0, 212, 255, 0.5);
+      }
+
+      .project-header {
+        padding: 25px;
+        background: linear-gradient(135deg, #00d4ff, #0099cc);
+        color: white;
+      }
+
+      .project-title {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+        font-weight: 700;
+      }
+
+      .project-type {
+        opacity: 0.9;
+        font-size: 0.9rem;
+      }
+
+      .project-content {
+        padding: 25px;
+      }
+
+      .project-description {
+        margin-bottom: 20px;
+        line-height: 1.6;
+        opacity: 0.9;
+      }
+
+      .project-tech {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 20px;
+      }
+
+      .tech-tag {
+        background: rgba(0, 212, 255, 0.2);
+        color: #00d4ff;
+        padding: 5px 12px;
+        border-radius: 15px;
+        font-size: 0.8rem;
+        font-weight: 500;
+      }
+
+      .project-links {
+        display: flex;
+        gap: 15px;
+      }
+
+      .project-link {
+        color: #00d4ff;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+
+      .project-link:hover {
+        color: #fff;
+      }
+
+      .skills-section {
+        background: #1a1a3a;
+        color: white;
+      }
+
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+      }
+
+      .skill-category {
+        background: rgba(0, 212, 255, 0.1);
+        border-radius: 15px;
+        padding: 30px;
+        border: 1px solid rgba(0, 212, 255, 0.2);
+      }
+
+      .skill-category h3 {
+        color: #00d4ff;
+        margin-bottom: 20px;
+        font-size: 1.3rem;
+      }
+
+      .skill-list {
+        list-style: none;
+      }
+
+      .skill-list li {
+        padding: 8px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .skill-list li:last-child {
+        border-bottom: none;
+      }
+
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 50px;
+        align-items: center;
+      }
+
+      .about-content h3 {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+        color: #00d4ff;
+      }
+
+      .about-content p {
+        margin-bottom: 20px;
+        color: #666;
+        line-height: 1.8;
+      }
+
+      .about-stats {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        margin-top: 30px;
+      }
+
+      .stat {
+        text-align: center;
+        padding: 20px;
+        background: #f8f9fa;
+        border-radius: 10px;
+      }
+
+      .stat-number {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #00d4ff;
+      }
+
+      .stat-label {
+        color: #666;
+        font-size: 0.9rem;
+      }
+
+      .about-image {
+        background: linear-gradient(135deg, #0f0f23, #1a1a3a);
+        height: 400px;
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 6rem;
+        color: #00d4ff;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .about-image::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,<svg width="50" height="50" xmlns="http://www.w3.org/2000/svg"><circle cx="25" cy="25" r="1" fill="%2300d4ff" opacity="0.3"/></svg>');
+      }
+
+      .contact {
+        background: #0f0f23;
+        color: white;
+        text-align: center;
+      }
+
+      .contact-links {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        margin-top: 30px;
+      }
+
+      .contact-link {
+        display: inline-block;
+        background: linear-gradient(135deg, #00d4ff, #0099cc);
+        color: white;
+        padding: 15px 30px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+      }
+
+      .contact-link:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 20px rgba(0, 212, 255, 0.3);
+      }
+
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+
+        .about-grid {
+          grid-template-columns: 1fr;
+          gap: 30px;
+        }
+
+        .skills-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .contact-links {
+          flex-direction: column;
+          align-items: center;
+          gap: 15px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="nav">
+      <div class="nav-container">
+        <div class="logo">&lt;JuanR/&gt;</div>
+        <ul class="nav-links">
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#proyectos">Proyectos</a></li>
+          <li><a href="#habilidades">Habilidades</a></li>
+          <li><a href="#sobre-mi">Sobre mí</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+        <a href="../index.html" class="back-btn">← Volver</a>
+      </div>
+    </nav>
+
+    <section id="inicio" class="hero">
+      <div class="hero-container">
+        <img src="../assets/img/jr.png" alt="Foto" class="hero-avatar" />
+
+        <h1>Juan Miguel Ramirez Mancilla</h1>
+        <div class="role">
+          Desarrollador Full Stack y especialista Marketing
+        </div>
+        <p class="description">
+          Construyo aplicaciones web robustas y escalables usando las
+          tecnologías más modernas. Mi pasión es resolver problemas complejos
+          con código limpio y eficiente.
+        </p>
+        <div class="hero-skills">
+          <span class="skill-badge">React</span>
+          <span class="skill-badge">Node.js</span>
+          <span class="skill-badge">Python</span>
+          <span class="skill-badge">MongoDB</span>
+          <span class="skill-badge">AWS</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="proyectos" class="section">
+      <h2>Mis Proyectos</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-header">
+            <h3 class="project-title">TaskFlow Pro</h3>
+            <div class="project-type">Aplicación Web Full Stack</div>
+          </div>
+          <div class="project-content">
+            <p class="project-description">
+              Plataforma de gestión de proyectos con funcionalidades avanzadas
+              como chat en tiempo real, kanban boards, reportes y integraciones
+              con APIs externas.
+            </p>
+            <div class="project-tech">
+              <span class="tech-tag">React</span>
+              <span class="tech-tag">Node.js</span>
+              <span class="tech-tag">Socket.io</span>
+              <span class="tech-tag">PostgreSQL</span>
+              <span class="tech-tag">Docker</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="project-link">🔗 Demo</a>
+              <a href="#" class="project-link">📦 GitHub</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <h3 class="project-title">EcoMarket API</h3>
+            <div class="project-type">RESTful API & Microservicios</div>
+          </div>
+          <div class="project-content">
+            <p class="project-description">
+              API REST para marketplace de productos ecológicos con arquitectura
+              de microservicios, autenticación JWT, pagos con Stripe y sistema
+              de notificaciones.
+            </p>
+            <div class="project-tech">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">FastAPI</span>
+              <span class="tech-tag">Redis</span>
+              <span class="tech-tag">MongoDB</span>
+              <span class="tech-tag">AWS Lambda</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="project-link">📚 Docs</a>
+              <a href="#" class="project-link">📦 GitHub</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <h3 class="project-title">SmartAnalytics</h3>
+            <div class="project-type">Dashboard & Data Visualization</div>
+          </div>
+          <div class="project-content">
+            <p class="project-description">
+              Dashboard interactivo para análisis de datos empresariales con
+              gráficos en tiempo real, filtros avanzados y exportación de
+              reportes en múltiples formatos.
+            </p>
+            <div class="project-tech">
+              <span class="tech-tag">React</span>
+              <span class="tech-tag">D3.js</span>
+              <span class="tech-tag">Express.js</span>
+              <span class="tech-tag">InfluxDB</span>
+              <span class="tech-tag">Grafana</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="project-link">🔗 Demo</a>
+              <a href="#" class="project-link">📦 GitHub</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="habilidades" class="section skills-section">
+      <h2>Habilidades Técnicas</h2>
+      <div class="skills-grid">
+        <div class="skill-category">
+          <h3>Frontend</h3>
+          <ul class="skill-list">
+            <li>React.js & Next.js</li>
+            <li>Vue.js & Nuxt.js</li>
+            <li>TypeScript</li>
+            <li>Tailwind CSS</li>
+            <li>Material-UI</li>
+          </ul>
+        </div>
+
+        <div class="skill-category">
+          <h3>Backend</h3>
+          <ul class="skill-list">
+            <li>Node.js & Express.js</li>
+            <li>Python & FastAPI</li>
+            <li>RESTful APIs</li>
+            <li>GraphQL</li>
+            <li>Microservicios</li>
+          </ul>
+        </div>
+
+        <div class="skill-category">
+          <h3>Base de Datos</h3>
+          <ul class="skill-list">
+            <li>MongoDB</li>
+            <li>PostgreSQL</li>
+            <li>Redis</li>
+            <li>InfluxDB</li>
+            <li>Elasticsearch</li>
+          </ul>
+        </div>
+
+        <div class="skill-category">
+          <h3>DevOps & Cloud</h3>
+          <ul class="skill-list">
+            <li>Docker & Kubernetes</li>
+            <li>AWS Services</li>
+            <li>CI/CD Pipelines</li>
+            <li>Nginx</li>
+            <li>Monitoring & Logging</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="sobre-mi" class="section">
+      <h2>Sobre Mí</h2>
+      <div class="about-grid">
+        <div class="about-content">
+          <h3>Mi Filosofía</h3>
+          <p>
+            Creo que la tecnología debe hacer la vida más fácil, no más
+            complicada. Por eso siempre busco crear soluciones que sean no solo
+            técnicamente sólidas, sino también intuitivas y escalables.
+          </p>
+          <p>
+            Con más de 6 años de experiencia en desarrollo web, he trabajado en
+            proyectos desde startups hasta empresas Fortune 500, siempre
+            enfocado en la calidad del código y las mejores prácticas de
+            desarrollo.
+          </p>
+          <div class="about-stats">
+            <div class="stat">
+              <div class="stat-number">50+</div>
+              <div class="stat-label">Proyectos</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number">6</div>
+              <div class="stat-label">Años Exp.</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number">15</div>
+              <div class="stat-label">Tecnologías</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number">99%</div>
+              <div class="stat-label">Uptime</div>
+            </div>
+          </div>
+        </div>
+        <div class="about-image">⚡</div>
+      </div>
+    </section>
+
+    <section id="contacto" class="section contact">
+      <h2>¿Hablamos de tu Proyecto?</h2>
+      <p>
+        Siempre estoy interesado en nuevos desafíos técnicos y oportunidades de
+        colaboración.
+      </p>
+      <div class="contact-links">
+        <a href="juan.mancilla0404@gmail.com" class="contact-link"
+          >📧 juan.mancilla0404@gmail.com</a
+        >
+        <a
+          href="https://www.linkedin.com/in/juan-ramirez-633052309/"
+          class="contact-link"
+          >💼 LinkedIn</a
+        >
+        <a href="https://github.com/Juanito040" class="contact-link"
+          >🐙 GitHub</a
+        >
+        <a href="3222376733" class="contact-link">📱 WhatsApp : 3222376733</a>
+      </div>
+    </section>
+
+    <script>
+      // Smooth scrolling
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        });
+      });
+
+      // Navbar scroll effect
+      window.addEventListener("scroll", () => {
+        const nav = document.querySelector(".nav");
+        if (window.scrollY > 100) {
+          nav.style.background = "rgba(15, 15, 35, 0.98)";
+        } else {
+          nav.style.background = "rgba(15, 15, 35, 0.95)";
+        }
+      });
+
+      // Animate elements on scroll
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateY(0)";
+          }
+        });
+      }, observerOptions);
+
+      document
+        .querySelectorAll(".project-card, .skill-category")
+        .forEach((element) => {
+          element.style.opacity = "0";
+          element.style.transform = "translateY(30px)";
+          element.style.transition = "all 0.6s ease";
+          observer.observe(element);
+        });
+
+      const logo = document.querySelector(".logo");
+      let text = "&lt;JUANR/&gt;";
+      let index = 0;
+
+      function typeWriter() {
+        if (index < text.length) {
+          logo.innerHTML =
+            text.substring(0, index + 1) + '<span style="opacity:0.5">|</span>';
+          index++;
+          setTimeout(typeWriter, 150);
+        } else {
+          logo.innerHTML = text;
+        }
+      }
+
+      // Start typing effect after page load
+      window.addEventListener("load", () => {
+        logo.innerHTML = "";
+        setTimeout(typeWriter, 1000);
+      });
+    </script>
+  </body>
+</html>
