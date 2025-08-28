@@ -1,320 +1,320 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portafolios Profesionales</title>
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portafolios Profesionales </title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+      }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-        }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
+      .header {
+        text-align: center;
+        margin-bottom: 60px;
+        padding-top: 40px;
+      }
 
-        .header {
-            text-align: center;
-            margin-bottom: 60px;
-            padding-top: 40px;
-        }
+      .header h1 {
+        font-size: 3.5rem;
+        color: white;
+        margin-bottom: 20px;
+        font-weight: 300;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
 
+      .header p {
+        font-size: 1.3rem;
+        color: rgba(255, 255, 255, 0.9);
+        margin-bottom: 40px;
+      }
+
+      .team-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 40px;
+        margin-bottom: 60px;
+      }
+
+      .member-card {
+        background: white;
+        border-radius: 20px;
+        padding: 40px 30px;
+        text-align: center;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .member-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 5px;
+        background: linear-gradient(90deg, #667eea, #764ba2);
+      }
+
+      .member-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+      }
+
+      .member-avatar {
+        width: 120px;
+        height: 120px;
+        margin: 0 auto 25px;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3rem;
+        color: white;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .member-avatar img {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      .member-card h2 {
+        font-size: 2rem;
+        margin-bottom: 10px;
+        color: #333;
+      }
+
+      .member-role {
+        font-size: 1.1rem;
+        color: #667eea;
+        margin-bottom: 15px;
+        font-weight: 600;
+      }
+
+      .member-card p {
+        font-size: 1rem;
+        color: #666;
+        margin-bottom: 25px;
+        line-height: 1.6;
+      }
+
+      .member-skills {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+        margin-bottom: 25px;
+      }
+      
+
+      .skill-tag {
+        background: rgba(102, 126, 234, 0.1);
+        color: #667eea;
+        padding: 5px 12px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 500;
+      }
+
+      .portfolio-link {
+        display: inline-block;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        padding: 12px 30px;
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 0.9rem;
+      }
+
+      .portfolio-link:hover {
+        background: linear-gradient(135deg, #5a6fd8, #6a4190);
+        transform: scale(1.05);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .footer {
+        text-align: center;
+        padding: 40px 20px;
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      .footer p {
+        font-size: 1.1rem;
+      }
+
+      @media (max-width: 768px) {
         .header h1 {
-            font-size: 3.5rem;
-            color: white;
-            margin-bottom: 20px;
-            font-weight: 300;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+          font-size: 2.5rem;
         }
 
         .header p {
-            font-size: 1.3rem;
-            color: rgba(255,255,255,0.9);
-            margin-bottom: 40px;
+          font-size: 1.1rem;
         }
+        
 
         .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
-            margin-bottom: 60px;
+          grid-template-columns: 1fr;
+          gap: 30px;
         }
 
         .member-card {
-            background: white;
-            border-radius: 20px;
-            padding: 40px 30px;
-            text-align: center;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
+          padding: 30px 20px;
         }
+      }
 
-        .member-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 5px;
-            background: linear-gradient(90deg, #667eea, #764ba2);
+      /* Animaciones */
+      .member-card {
+        opacity: 0;
+        transform: translateY(30px);
+        animation: fadeInUp 0.6s ease forwards;
+      }
+
+      .member-card:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+
+      .member-card:nth-child(3) {
+        animation-delay: 0.4s;
+      }
+
+      @keyframes fadeInUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
         }
+      }
 
-        .member-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+      .header {
+        opacity: 0;
+        animation: fadeIn 1s ease forwards;
+      }
+
+      @keyframes fadeIn {
+        to {
+          opacity: 1;
         }
-
-        .member-avatar {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 25px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .member-card h2 {
-            font-size: 2rem;
-            margin-bottom: 10px;
-            color: #333;
-        }
-.hero-avatar {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    margin: 0 auto 30px;
-    border: 3px solid rgba(0, 212, 255, 0.3);
-    overflow: hidden; /* 🔥 recorta la parte que sobra */
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-}
-
-.hero-avatar img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* 🔥 asegura que se recorte bien y no se deforme */
-}
-
-        .member-role {
-            font-size: 1.1rem;
-            color: #667eea;
-            margin-bottom: 15px;
-            font-weight: 600;
-        }
-
-        .member-card p {
-            font-size: 1rem;
-            color: #666;
-            margin-bottom: 25px;
-            line-height: 1.6;
-        }
-
-        .member-skills {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 8px;
-            margin-bottom: 25px;
-        }
-
-        .skill-tag {
-            background: rgba(102, 126, 234, 0.1);
-            color: #667eea;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-
-        .portfolio-link {
-            display: inline-block;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            padding: 12px 30px;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.9rem;
-        }
-
-        .portfolio-link:hover {
-            background: linear-gradient(135deg, #5a6fd8, #6a4190);
-            transform: scale(1.05);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-        }
-
-        .footer {
-            text-align: center;
-            padding: 40px 20px;
-            color: rgba(255,255,255,0.8);
-        }
-
-        .footer p {
-            font-size: 1.1rem;
-        }
-
-        @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2.5rem;
-            }
-            
-            .header p {
-                font-size: 1.1rem;
-            }
-            
-            .team-grid {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-            
-            .member-card {
-                padding: 30px 20px;
-            }
-        }
-
-        /* Animaciones */
-        .member-card {
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 0.6s ease forwards;
-        }
-
-        .member-card:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-
-        .member-card:nth-child(3) {
-            animation-delay: 0.4s;
-        }
-
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .header {
-            opacity: 0;
-            animation: fadeIn 1s ease forwards;
-        }
-
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-            }
-        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <div class="header">
-            <h1>Nuestro Equipo</h1>
-            <p>Conoce a nuestros profesionales y explora sus portafolios</p>
+      <div class="header">
+        <h1>Nuestro Equipo</h1>
+        <p>Conoce a nuestros profesionales y explora sus portafolios</p>
+      </div>
+
+      <div class="team-grid">
+        <div class="member-card">
+          <div class="member-avatar">👩‍🎨</div>
+          <h2>ej1</h2>
+          <div class="member-role">Diseñadora UX/UI</div>
+          <p>
+            Especialista en experiencia de usuario con más de 5 años creando
+            interfaces intuitivas y atractivas para aplicaciones web y móviles.
+          </p>
+          <div class="member-skills">
+            <span class="skill-tag">Figma</span>
+            <span class="skill-tag">Adobe XD</span>
+            <span class="skill-tag">Prototyping</span>
+            <span class="skill-tag">User Research</span>
+          </div>
+          <a href="pages/portfolio1.html" class="portfolio-link"
+            >Ver Portafolio</a
+          >
         </div>
 
-        <div class="team-grid">
-       
-            <div class="member-card">
-                <div class="member-avatar">
-                    👩‍🎨
-                </div>
-                <h2>ej1</h2>
-                <div class="member-role">Diseñadora UX/UI</div>
-                <p>Especialista en experiencia de usuario con más de 5 años creando interfaces intuitivas y atractivas para aplicaciones web y móviles.</p>
-                <div class="member-skills">
-                    <span class="skill-tag">Figma</span>
-                    <span class="skill-tag">Adobe XD</span>
-                    <span class="skill-tag">Prototyping</span>
-                    <span class="skill-tag">User Research</span>
-                </div>
-                <a href="pages/portfolio1.html" class="portfolio-link">Ver Portafolio</a>
-            </div>
+        <!-- Daniel Ramirez - Desarrollador Full Stack -->
+<div class="member-card">
+   <div class="member-avatar">
+      <img src="../1002395347.jpg" alt="Daniel Ramirez" />
+   </div>
+   <h2>Daniel Ramirez</h2>
+   <div class="member-role">Desarrollador Full Stack</div>
+   <p>Desarrollador apasionado por crear soluciones web robustas y escalables. Experto en tecnologías modernas de frontend y backend.</p>
+   <div class="member-skills">
+      <span class="skill-tag">React</span>
+      <span class="skill-tag">Node.js</span>
+      <span class="skill-tag">Python</span>
+      <span class="skill-tag">MongoDB</span>
+   </div>
+   <a href="pages/portfolio2.html" class="portfolio-link">Ver Portafolio</a>
+</div>
 
-            <!--Daniel R - Desarrollador Full Stack -->
-            <div class="member-card">
-                   <div class="hero-avatar">
-                <img src="../1002395347.jpg" alt="1002395347.jpg" />
-            </div>
-                <h2>Daniel Ramirez</h2>
-                <div class="member-role">Desarrollador Full Stack</div>
-                <p>Desarrollador apasionado por crear soluciones web robustas y escalables. Experto en tecnologías modernas de frontend y backend.</p>
-                <div class="member-skills">
-                    <span class="skill-tag">React</span>
-                    <span class="skill-tag">Node.js</span>
-                    <span class="skill-tag">Python</span>
-                    <span class="skill-tag">MongoDB</span>
-                </div>
-                <a href="pages/portfolio2.html" class="portfolio-link">Ver Portafolio</a>
-            </div>
-
-            <!-- Ana Martín - Marketing Digital -->
-            <div class="member-card">
-                <div class="member-avatar">
-                    👩‍💼
-                </div>
-                <h2>ejemplo3</h2>
-                <div class="member-role">Marketing Digital</div>
-                <p>Estratega digital con experiencia en campañas exitosas de marketing online, SEO, redes sociales y análisis de datos.</p>
-                <div class="member-skills">
-                    <span class="skill-tag">SEO/SEM</span>
-                    <span class="skill-tag">Google Analytics</span>
-                    <span class="skill-tag">Social Media</span>
-                    <span class="skill-tag">Content Marketing</span>
-                </div>
-                <a href="pages/portfolio3.html" class="portfolio-link">Ver Portafolio</a>
-            </div>
+        <div class="member-card">
+          <div class="member-avatar">
+            <img src="assets/img/jr.png" alt="Juan Miguel" />
+          </div>
+          <h2>Juan Miguel Ramirez Mancilla</h2>
+          <div class="member-role">Ingeniero de sistemas</div>
+          <p>
+            Experto en tecnologías modernas de frontend y backend. Estratega
+            digital con experiencia en campañas exitosas de marketing online,
+            SEO, redes sociales y análisis de datos.
+          </p>
+          <div class="member-skills">
+             <span class="skill-tag"> Python </span>
+          <span class="skill-tag"> JS </span>
+          <span class="skill-tag"> PHP </span>
+          <span class="skill-tag"> HTML </span>
+          </div>
+          <a href="pages/portfolio3.html" class="portfolio-link"
+            >Ver Portafolio</a
+          >
         </div>
+      </div>
 
-        <div class="footer">
-            <p>&copy; 2025 - Portafolios Profesionales</p>
-        </div>
+      <div class="footer">
+        <p>&copy; 2025 - Portafolios Profesionales</p>
+      </div>
     </div>
 
     <script>
-        // Efecto de hover mejorado
-        document.querySelectorAll('.member-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-10px) scale(1.02)';
-            });
-            
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0) scale(1)';
-            });
+      // Efecto de hover mejorado
+      document.querySelectorAll(".member-card").forEach((card) => {
+        card.addEventListener("mouseenter", function () {
+          this.style.transform = "translateY(-10px) scale(1.02)";
         });
 
-        // Efecto de clic en los enlaces
-        document.querySelectorAll('.portfolio-link').forEach(link => {
-            link.addEventListener('click', function(e) {
-                this.style.transform = 'scale(0.95)';
-                setTimeout(() => {
-                    this.style.transform = 'scale(1)';
-                }, 150);
-            });
+        card.addEventListener("mouseleave", function () {
+          this.style.transform = "translateY(0) scale(1)";
         });
+      });
+
+      // Efecto de clic en los enlaces
+      document.querySelectorAll(".portfolio-link").forEach((link) => {
+        link.addEventListener("click", function (e) {
+          this.style.transform = "scale(0.95)";
+          setTimeout(() => {
+            this.style.transform = "scale(1)";
+          }, 150);
+        });
+      });
     </script>
-</body>
+  </body>
 </html>
